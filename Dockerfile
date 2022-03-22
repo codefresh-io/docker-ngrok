@@ -1,11 +1,11 @@
 FROM alpine:3.8
 
+ADD https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz /ngrok.tgz
+
 RUN set -x \
   # Install ngrok (latest official stable from https://ngrok.com/download).
-  && apk add --no-cache curl \
-  && curl -Lo /ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip \
-  && unzip -o /ngrok.zip -d /bin \
-  && rm -f /ngrok.zip \
+  && tar -xzf /ngrok.tgz -C /bin \
+  && rm -f /ngrok.tgz \
   # Create non-root user.
   && adduser -h /home/ngrok -D -u 6737 ngrok
 
