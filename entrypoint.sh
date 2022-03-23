@@ -14,4 +14,5 @@ fi
 echo "Running ngrok using following configuration:"
 cat $CONFIG_FILE
 
-ngrok start --all -config $CONFIG_FILE
+ngrok config upgrade --config $CONFIG_FILE
+ngrok start --all --config $CONFIG_FILE
